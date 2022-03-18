@@ -17,6 +17,7 @@ class AugmentedIntervalTree : public IntervalTree<T>
 		ClearRecursion(node->left);
 		ClearRecursion(node->right);
 		delete node;
+		node = nullptr;
 	}
 
 	void UpdateMinMax(Node<T>*& currentNode)
@@ -51,6 +52,7 @@ class AugmentedIntervalTree : public IntervalTree<T>
 		}
 		if (node->interval == interval)
 		{
+			cerr << "Hey! ADDING {"<< interval <<"} BORKED" << endl;
 			return false;
 		}
 		else if (interval < node->interval)
@@ -188,7 +190,12 @@ public:
 	bool remove(T const& lower, T const& upper) override
 	{
 		Interval<T> interval(lower, upper);
-		return (RemoveRecursion(this->root, interval));
+		bool removed = (RemoveRecursion(this->root, interval));
+		if(removed)
+		{
+			cerr << "Hey! REMOVING {"<< interval <<"} BORKED" << endl;
+		}
+		return removed;
 	}
 
 	vector<Interval<T>> query(T const& point) const override

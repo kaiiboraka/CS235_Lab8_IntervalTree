@@ -29,7 +29,8 @@ int main()
 	test("remove [3, 5)", tree.remove(3, 5), true);
 	test("remove fake [1, 9)", tree.remove(1, 9), false);
 
-
+	tree.clear();
+	test("clear", tree.is_empty(), true);
 
 	return 0;
 }
