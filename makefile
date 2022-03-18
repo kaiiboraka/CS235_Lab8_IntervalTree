@@ -1,4 +1,4 @@
-build:
-	g++ -g -g tests main.cpp
-test: build
-	valgrind --leak-check ./tests
+all:
+	g++ -o tests tests.cpp -g
+test: all
+	valgrind --leak-check=full ./tests

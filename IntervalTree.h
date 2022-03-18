@@ -36,8 +36,7 @@ struct Interval
 
 	bool operator<(Interval const& other) const
 	{
-		return this->lower < other.lower ||
-			   (this->lower == other.lower && this->upper < other.upper);
+		return this->lower < other.lower || (this->lower == other.lower && this->upper < other.upper);
 	}
 
 	bool contains(T const& point) const
@@ -248,14 +247,14 @@ template<class T>
 void test(string const& message, T const& observed, T const& expected)
 {
 	cout << message << endl;
-	cout << "Expected:" << endl << expected << "Observed:" << endl << observed << endl;
+	cout << "Expected: " << expected << endl << "Observed: " << observed << endl;
 	if (expected == observed)
 	{
-		cout << "Passed ✅" << endl;
+		cout << "Passed ✅" << endl << endl;
 	}
 	else
 	{
-		cerr << "Failed" << endl;
+		cerr << "Failed ❌" << endl << endl;
 		throw invalid_argument(((string) "FAILED TEST: ") + message);
 	}
 }

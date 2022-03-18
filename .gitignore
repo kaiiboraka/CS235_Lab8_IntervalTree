@@ -3,6 +3,7 @@
 /.idea
 /cmake-build-debug
 /WindowsEndlines
+tests
 *.html
 out_*
 *.pdf
